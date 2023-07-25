@@ -5,7 +5,7 @@ Write_Theme_File(
     Create_Colors_String(lambda {
         |ansi, color_hex, __color_name| "#{
             ansi % 7 == 0 ? "\n\t" : ", "
-        }#{color_hex}"
+        }#{Quote(color_hex)}"
     }) +
     "\n};
 unsigned int defaultfg = 15, defaultbg = 0, defaultcs = 15;

@@ -2,11 +2,15 @@ require_relative("libraries/utilities")
 
 def Create_Colors_Section(name)
     return "  #{name}:\n" + Create_Colors_String(lambda {
-        |__ansi, color_hex, color_name| "    #{color_name}: #{color_hex}\n"
+        |__ansi, color_hex, color_name| "    #{color_name}: \"#{color_hex}\"\n"
     }, true)
 end
 
-Write_Theme_File("colors:
+Write_Theme_File("# name: #{$metadata[:name]}
+# author: #{$metadata[:author]}
+# license: #{$metadata[:license]}
+# upstream: #{$metadata[:upstream]}
+colors:
   primary:
     background: #{Quote($metadata[:colors_hex][0])}
     foreground: #{Quote($metadata[:colors_hex][7])}

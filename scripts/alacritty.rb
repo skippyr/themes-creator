@@ -1,31 +1,19 @@
-require_relative("libraries/metadata")
-require_relative("libraries/string")
+require_relative("libraries/utilities")
 
-def Create_Inverted_Section(name)
-    "  #{name}:\n    text: CellBackground\n    cursor: CellForeground\n"
+def Create_Colors_Section(name)
+    return "  #{name}:\n" + Create_Colors_String(lambda {
+        |__ansi, color_hex, color_name| "    #{color_name}: #{color_hex}\n"
+    }, true)
 end
 
-def Create_Colors_Section(is_normal = true)
-    color_names = [
-        "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"
-    ]
-    section = "  #{is_normal ? "normal" : "bright"}:\n    black: #{Quote(
-        is_normal ? $metadata[:colors][0] : $metadata[:colors][4]
-    )}\n"
-    for index in 1..7
-        section += "    #{color_names[index]}: #{Quote($metadata[:colors][index])}\n"
-    end
-    section
-end
-
-contents = "colors:
+Write_Theme_File("colors:
   primary:
-    background: #{Quote($metadata[:colors][0])}
-    foreground: #{Quote($metadata[:colors][7])}
-"
-contents += (
-    Create_Inverted_Section("cursor") + Create_Inverted_Section("selection") +
-    Create_Colors_Section() + Create_Colors_Section(false)
-)
-
-Write_Theme_File(contents)
+    background: #{Quote($metadata[:colors_hex][0])}
+    foreground: #{Quote($metadata[:colors_hex][7])}
+  cursor:
+    text: CellBackground
+    cursor: CellForeground
+  selection:
+    text: CellBackground
+    cursor: CellForeground
+" + Create_Colors_Section("normal") + Create_Colors_Section("bright"))

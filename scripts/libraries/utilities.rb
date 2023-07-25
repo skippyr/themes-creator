@@ -45,7 +45,7 @@ def Parse_Metadata()
         author: lines[1],
         license: lines[2],
         upstream: lines[3],
-        colors: Treat_Colors(lines[4..])
+        colors_hex: Treat_Colors(lines[4..])
     }
 end
 
@@ -59,6 +59,23 @@ def Write_Theme_File(contents)
         Throw_Error("can not overwrite any scripts content.")
     end
     File.write(ARGV[1], contents)
+end
+
+def Create_Colors_String(action, is_three_bits = false)
+    color_names = [
+        "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"
+    ]
+    result = ""
+    for ansi in 0..(is_three_bits ? 7 : 15)
+        color_hex = $metadata[:colors_hex][ansi == 8 ? 4 : ansi <= 7 ? ansi : ansi - 8]
+        color_name = color_names[ansi <= 7 ? ansi : ansi - 8]
+        result += action.call(ansi, color_hex, color_name)
+    end
+    result
+end
+
+def Quote(text)
+    "\"#{text}\""
 end
 
 Parse_Quantity_Of_Arguments()

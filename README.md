@@ -64,7 +64,7 @@ cd themes-creator
   theme for Kitty will be created from the template file.
 
   ```bash
-  ruby scripts/kitty template.theme
+  ruby scripts/kitty.rb template.theme
   ```
 
   The first argument must be the path to your metadata file. The second

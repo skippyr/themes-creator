@@ -16,19 +16,18 @@ def parse_metadata()
       "#{expected_number_of_lines} but received #{lines.length}."
     )
   end
-  metadata = {
+  return {
     name: lines[0],
     colors: lines[1..9]
   }
-  return metadata
 end
 
 def write_theme_file(script_file, contents)
   if (ARGV.length < 2) then
     puts(contents)
   else
-    out_file = File.expand_path(ARGV[1])
-    if (out_file == File.expand_path(script_file))
+    absolute_theme_file = File.expand_path(ARGV[1])
+    if (absolute_theme_file == File.expand_path(script_file))
       throw_error("can not override script \"#{script_file}\".")
     else
       if !File.exist?(File.dirname(ARGV[1]))

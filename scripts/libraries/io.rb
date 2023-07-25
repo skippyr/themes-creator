@@ -8,10 +8,14 @@ if (ARGV.length < 1) then
 end
 
 def parse_metadata()
+  expected_number_of_lines = 9
   lines = []
   File.readlines(ARGV[0]).each do |line| lines.push(line.chomp()) end
-  if (lines.length != 9)
-    throw_error('incorrect number of lines in theme file.')
+  if (lines.length != expected_number_of_lines)
+    throw_error(
+      "incorrect number of lines in metadata file.\n                Expected " +
+      "#{expected_number_of_lines} but received #{lines.length}."
+    )
   end
   metadata = {
     name: lines[0],

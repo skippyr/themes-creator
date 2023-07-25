@@ -3,10 +3,6 @@ def throw_error(error_message)
   exit(1)
 end
 
-if (ARGV.length < 1) then
-  throw_error('not enough arguments.')
-end
-
 def parse_metadata()
   expected_number_of_lines = 9
   lines = []
@@ -35,4 +31,12 @@ def write_theme_file(script_file, contents)
       File.write(ARGV[1], contents)
     end
   end
+end
+
+def quote(text)
+  "\"#{text}\""
+end
+
+if (ARGV.length < 1) then
+  throw_error('not enough arguments.')
 end

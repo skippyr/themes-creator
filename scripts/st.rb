@@ -1,7 +1,13 @@
 require_relative("libraries/utilities")
 
 Write_Theme_File(
-    "static const char *colorname[16] = {" +
+    "/*
+ * name: #{$metadata[:name]}
+ * author: #{$metadata[:author]}
+ * license: #{$metadata[:license]}
+ * upstream: #{$metadata[:upstream]}
+ */
+static const char *colorname[16] = {" +
     Create_Colors_String(lambda {
         |ansi, color_hex, __color_name| "#{
             ansi % 7 == 0 ? "\n\t" : " "

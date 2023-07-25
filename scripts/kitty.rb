@@ -1,4 +1,4 @@
-require_relative("libraries/utilities")
+require_relative("libraries/metadata")
 
 def Create_Color(ansi, index = ansi)
     "color#{ansi} #{$metadata[:colors][index]}\n"

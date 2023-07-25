@@ -41,14 +41,17 @@ cd themes-creator
   | Line | Description |
   |-|-|
   | 1 | The name of the theme. |
-  | 2 | Color of ANSI 0 (Black) (Background) |
-  | 3 | Color of ANSI 1 (Red) |
-  | 4 | Color of ANSI 2 (Green) |
-  | 5 | Color of ANSI 3 (Yellow) |
-  | 6 | Color of ANSI 4 (Blue) |
-  | 7 | Color of ANSI 5 (Magenta) |
-  | 8 | Color of ANSI 6 (Cyan) |
-  | 9 | Color of ANSI 7 (White) (Foreground) |
+  | 2 | The author of the theme. |
+  | 3 | The license of the theme. |
+  | 4 | The upstream of the theme. |
+  | 5 | Color of ANSI 0 (Black) (Background) |
+  | 6 | Color of ANSI 1 (Red) |
+  | 7 | Color of ANSI 2 (Green) |
+  | 8 | Color of ANSI 3 (Yellow) |
+  | 9 | Color of ANSI 4 (Blue) |
+  | 10 | Color of ANSI 5 (Magenta) |
+  | 11 | Color of ANSI 6 (Cyan) |
+  | 12 | Color of ANSI 7 (White) (Foreground) |
 
   All the colors must use HEX format. The colors that you choose do not
   necessarily need to follow the specification of the ANSI colors.

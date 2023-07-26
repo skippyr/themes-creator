@@ -29,6 +29,12 @@ def Treat_Colors(colors)
 end
 
 def Parse_Metadata()
+    if !File.exist?(ARGV[0])
+        Throw_Error(
+            "the metadata file \"#{ARGV[0]}\" does not exists.",
+            "Ensure that you did not misspelled it."
+        )
+    end
     expected_number_of_lines = 12
     lines = []
     File.readlines(ARGV[0]).each do |line|
@@ -49,16 +55,27 @@ def Parse_Metadata()
     }
 end
 
-def Write_Theme_File(contents)
+def Write_Theme_File(contents, is_executable = false)
     scripts_directory = File.dirname(__dir__)
     if ARGV.length == 1
         puts(contents)
         return
     end
-    if File.expand_path(ARGV[1]).include?(scripts_directory)
-        Throw_Error("can not overwrite any scripts content.")
+    if !File.exist?(File.dirname(ARGV[1]))
+        Throw_Error(
+            "the parent directory of the theme file \"#{ARGV[1]}\" does not " +
+            "exists.", "Ensure that you did not misspelled it."
+        )
+    elsif File.expand_path(ARGV[1]).include?(scripts_directory)
+        Throw_Error(
+            "can not overwrite any scripts content.",
+            "Try pointing to another directory."
+        )
     end
     File.write(ARGV[1], contents)
+    if is_executable
+        File.chmod(0755, ARGV[1])
+    end
 end
 
 def Create_Colors_String(action, is_three_bits = false)

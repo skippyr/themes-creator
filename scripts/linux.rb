@@ -10,5 +10,5 @@ Write_Theme_File("#!/usr/bin/env bash
     |ansi, color_hex, __color_name| "echo -en #{Quote(
         "\\\\e]P#{ansi.to_s(16)}#{color_hex[1..]}"
     )}\n"
-}))
+}), true)
 

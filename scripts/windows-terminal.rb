@@ -5,6 +5,7 @@ Write_Theme_File("/*
  * license: #{$metadata[:license]}
  * upstream: #{$metadata[:upstream]}
  */
+
 {
     #{Quote("name")}: #{Quote($metadata[:name])},
 " + Create_Colors_String(lambda {

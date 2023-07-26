@@ -15,4 +15,5 @@ Write_Theme_File("{
     #{Quote("foreground")}: #{Quote($metadata[:colors_hex][7])},
     #{Quote("cursorColor")}: #{Quote($metadata[:colors_hex][7])},
     #{Quote("selectionBackground")}: #{Quote($metadata[:colors_hex][7])}
-}")
+}
+")

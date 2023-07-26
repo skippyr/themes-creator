@@ -21,4 +21,5 @@ selection_fg = #{Quote($metadata[:colors_hex][0])}
 ansi = [" + Create_Colors() +
 "\n]
 brights = [" + Create_Colors(true) +
-"\n]")
+"\n]
+")

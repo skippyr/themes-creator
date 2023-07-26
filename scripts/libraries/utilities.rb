@@ -58,7 +58,7 @@ end
 def Write_Theme_File(contents, is_executable = false)
     scripts_directory = File.dirname(__dir__)
     if ARGV.length == 1
-        puts(contents)
+        print(contents)
         return
     end
     if !File.exist?(File.dirname(ARGV[1]))

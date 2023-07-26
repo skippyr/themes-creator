@@ -78,13 +78,20 @@ def Write_Theme_File(contents, is_executable = false)
     end
 end
 
-def Create_Colors_String(action, is_three_bits = false)
+def Create_Colors_String(
+    action, is_three_bits = false, is_bright = false,
+    is_magenta_variant = false
+)
     color_names = [
-        "black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"
+        "black", "red", "green", "yellow", "blue",
+        is_magenta_variant ? "purple" : "magenta", "cyan", "white"
     ]
     result = ""
     for ansi in 0..(is_three_bits ? 7 : 15)
-        color_hex = $metadata[:colors_hex][ansi == 8 ? 4 : ansi <= 7 ? ansi : ansi - 8]
+        color_hex = $metadata[:colors_hex][
+            (ansi == 0 && is_three_bits && is_bright) || ansi == 8 ? 4 :
+            ansi <= 7 ? ansi : ansi - 8
+        ]
         color_name = color_names[ansi <= 7 ? ansi : ansi - 8]
         result += action.call(ansi, color_hex, color_name)
     end

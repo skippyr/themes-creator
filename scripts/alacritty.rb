@@ -1,9 +1,9 @@
 require_relative("libraries/utilities")
 
-def Create_Colors_Section(name)
+def Create_Colors_Section(name, is_bright = false)
     return "  #{name}:\n" + Create_Colors_String(lambda {
         |__ansi, color_hex, color_name| "    #{color_name}: \"#{color_hex}\"\n"
-    }, true)
+    }, true, is_bright)
 end
 
 Write_Theme_File("# name: #{$metadata[:name]}
@@ -21,4 +21,4 @@ colors:
   selection:
     text: CellBackground
     cursor: CellForeground
-" + Create_Colors_Section("normal") + Create_Colors_Section("bright"))
+" + Create_Colors_Section("normal") + Create_Colors_Section("bright", true))

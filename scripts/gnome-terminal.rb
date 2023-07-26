@@ -16,4 +16,8 @@ Write_Property() {
 Write_Property use-theme-colors false
 Write_Property background-color #{Quote($metadata[:colors_hex][0])}
 Write_Property foreground-color #{Quote($metadata[:colors_hex][7])}
+Write_Property palette\\
+    #{Quote("[" + Create_Colors_String(
+        lambda {|ansi, color_hex, __color_name| "\\\"#{color_hex}\\\"#{ansi == 7 ? "" : ","}#{ansi == 5 ? "\n" : ""}"}, true
+) + "]")}
 ")

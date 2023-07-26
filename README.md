@@ -3,7 +3,8 @@
 ## About
 
 A collection of scripts to easily create theme files for terminal emulators and
-other applications.
+other applications. These are the tools that also support my theme:
+[Flamerial](https://github.com/skippyr/flamerial).
 
 ![](preview.png)
 

@@ -10,6 +10,7 @@ Write_Theme_File("[metadata]
 name = #{Quote($metadata[:name])}
 author = #{Quote($metadata[:author])}
 origin_url = #{Quote($metadata[:upstream])}
+
 [colors]
 background = #{Quote($metadata[:colors_hex][0])}
 foreground = #{Quote($metadata[:colors_hex][7])}

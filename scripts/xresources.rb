@@ -4,6 +4,7 @@ Write_Theme_File("! name: #{$metadata[:name]}
 ! author: #{$metadata[:author]}
 ! license: #{$metadata[:license]}
 ! upstream: #{$metadata[:upstream]}
+
 .*background: #{$metadata[:colors_hex][0]}
 .*foreground: #{$metadata[:colors_hex][7]}
 " + Create_Colors_String(lambda {

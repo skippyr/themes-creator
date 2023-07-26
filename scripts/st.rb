@@ -7,6 +7,7 @@ Write_Theme_File(
  * license: #{$metadata[:license]}
  * upstream: #{$metadata[:upstream]}
  */
+
 static const char *colorname[16] = {" +
     Create_Colors_String(lambda {
         |ansi, color_hex, __color_name| "\n\t#{Quote(color_hex)},"

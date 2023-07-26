@@ -10,6 +10,7 @@ Write_Theme_File("# name: #{$metadata[:name]}
 # author: #{$metadata[:author]}
 # license: #{$metadata[:license]}
 # upstream: #{$metadata[:upstream]}
+
 colors:
   primary:
     background: #{Quote($metadata[:colors_hex][0])}

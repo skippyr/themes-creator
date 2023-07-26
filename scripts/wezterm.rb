@@ -1,7 +1,9 @@
 require_relative("libraries/utilities")
 
 def Create_Colors()
-    Create_Colors_String(lambda {|__ansi, color_hex, __color_name| "\n    #{Quote(color_hex)},"}, true)
+    Create_Colors_String(lambda {
+        |__ansi, color_hex, __color_name| "\n    #{Quote(color_hex)},"
+    }, true)
 end
 
 Write_Theme_File("[metadata]

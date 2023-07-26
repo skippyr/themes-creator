@@ -3,7 +3,7 @@
 ## About
 
 A group of scripts to help you easily create theme files for some terminal
-emulators.
+emulators and applications.
 
 ![](preview.png)
 

@@ -72,7 +72,7 @@ cd themes-creator
   given, it will print the theme to `stdout`.
 
   If the theme file that you create is intended to be a script, it will
-  automatically turned it into an executable.
+  be automatically turned into an executable.
 
 ## Support
 

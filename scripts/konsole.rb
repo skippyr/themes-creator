@@ -9,8 +9,7 @@ def Create_Color_Blocks(name, hex)
     blocks
 end
 
-Write_Theme_File("
-[General]
+Write_Theme_File("[General]
 Description=#{$metadata[:name]}
 " + Create_Color_Blocks("Background", $metadata[:colors_hex][0]) +
 Create_Color_Blocks("Foreground", $metadata[:colors_hex][7]) +

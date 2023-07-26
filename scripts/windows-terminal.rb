@@ -3,10 +3,10 @@ require_relative("libraries/utilities")
 Write_Theme_File("{
     #{Quote("name")}: #{Quote($metadata[:name])},
 " + Create_Colors_String(lambda {
-    |ansi, color_hex, color_name|
+    |__ansi, color_hex, color_name|
     "    #{Quote(color_name)}: #{Quote(color_hex)},\n"
 }, true, false, true) + Create_Colors_String(lambda {
-    |ansi, color_hex, color_name|
+    |__ansi, color_hex, color_name|
     "    #{Quote(
         "bright" + color_name[0].upcase() + color_name[1..]
     )}: #{Quote(color_hex)},\n"

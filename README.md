@@ -2,8 +2,8 @@
 
 ## About
 
-A group of scripts to help you easily create theme files for some terminal
-emulators and applications.
+A collection of scripts to easily create theme files for terminal emulators and
+other applications.
 
 ![](preview.png)
 
@@ -70,6 +70,9 @@ cd themes-creator
   The first argument must be the path to your metadata file. The second
   argument will be the path of a file where the theme will be stored. If not
   given, it will print the theme to `stdout`.
+
+  If the theme file that you create is intended to be a script, it will
+  automatically turned it into an executable.
 
 ## Support
 

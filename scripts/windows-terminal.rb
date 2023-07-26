@@ -1,12 +1,6 @@
 require_relative("libraries/utilities")
 
-Write_Theme_File("/*
- * author: #{$metadata[:author]}
- * license: #{$metadata[:license]}
- * upstream: #{$metadata[:upstream]}
- */
-
-{
+Write_Theme_File("{
     #{Quote("name")}: #{Quote($metadata[:name])},
 " + Create_Colors_String(lambda {
     |ansi, color_hex, color_name|

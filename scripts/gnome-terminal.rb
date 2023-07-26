@@ -26,7 +26,9 @@ Write_Property cursor-foreground-color #{Quote($metadata[:colors_hex][0])}
 Write_Property highlight-background-color #{Quote($metadata[:colors_hex][7])}
 Write_Property highlight-foreground-color #{Quote($metadata[:colors_hex][0])}
 Write_Property palette #{Quote("[" + Create_Colors_String(
-    lambda {|ansi, color_hex, __color_name|
-    "\\\n    \\\"#{color_hex}\\\"#{ansi == 7 ? "\\\n" : ","}"}, true
+    lambda {
+        |ansi, color_hex, __color_name|
+        "\\\n    \\\"#{color_hex}\\\"#{ansi == 15 ? "\\\n" : ","}"
+    }
 ) + "]")}
 ", true)

@@ -43,6 +43,11 @@ def parse_colors(colors_hex)
         "the HEX color \"#{color_hex}\" has an invalid number of characters.",
         'Ensure that you did not misspelled.'
       )
+    elsif (color_hex[0] != '#')
+      throw_error(
+        "the HEX color \"#{color_hex}\" must start with the \"#\" character.",
+        'Ensure that you did not misspelled.'
+      )
     end
     color_hex.chars()[1..].each() do |character|
       if (!character.match(/[0-9A-Fa-f]/))
@@ -106,6 +111,11 @@ def create_color_strings(
     color_strings.push(filter.call(color_ansi, color_hex, color_name))
   end
   color_strings
+end
+
+def enclose_by_double_quotes(text, escape: false)
+  quotes = "#{escape ? "\\" : ""}\""
+  "#{quotes}#{text}#{quotes}"
 end
 
 check_arguments()

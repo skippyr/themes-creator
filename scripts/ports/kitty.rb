@@ -4,8 +4,8 @@ def create_metadata_comment(label, value)
   "## #{label}: #{value}"
 end
 
-def create_property(name, value)
-  "#{name} #{value}"
+def create_property(label, value)
+  "#{label} #{value}"
 end
 
 write_theme_file([
@@ -26,6 +26,7 @@ write_theme_file([
   create_property('active_border_color', $metadata[:colors_hex][2]),
   create_property('inactive_border_color', $metadata[:colors_hex][0]),
   create_property('url_color', $metadata[:colors_hex][4]),
-].join("\n") + "\n" + create_color_strings(lambda {
-  |color_ansi, color_hex, _color_name| "color#{color_ansi} #{color_hex}"
-}).join("\n") + "\n")
+  create_color_strings(lambda {
+    |color_ansi, color_hex, _color_name| "color#{color_ansi} #{color_hex}"
+  })
+].join("\n") + "\n")

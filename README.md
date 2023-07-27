@@ -21,7 +21,7 @@ The following dependencies must be installed to run this sofware properly:
 | git | Required to download this repository. |
 | ruby | Required to run the scripts. |
 
-### Installation
+### Procedures
 
 - Clone this repository.
 

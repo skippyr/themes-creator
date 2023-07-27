@@ -26,5 +26,5 @@ write_theme_file([
   create_color_strings(lambda {
     |color_ansi, color_hex, _color_name|
     create_color_blocks("Color#{color_ansi}", color_hex)
-  })
+  }, use_groups: true)
 ].join("\n") + "\n")

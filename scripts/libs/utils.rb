@@ -80,9 +80,12 @@ def parse_metadata()
   }
 end
 
-def write_theme_file(contents)
+def write_theme_file(contents, is_executable: false)
   if (ARGV[1])
     File.write(ARGV[1], contents)
+    if is_executable
+      File.chmod(0755, ARGV[1])
+    end
   else
     print(contents)
   end

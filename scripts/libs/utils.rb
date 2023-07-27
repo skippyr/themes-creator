@@ -45,7 +45,7 @@ def parse_colors(colors_hex)
       )
     end
     color_hex.chars()[1..].each() do |character|
-      if (character.match(/[0-9A-Fa-f]/) == nil)
+      if (!character.match(/[0-9A-Fa-f]/))
         throw_error(
           "the HEX color \"#{color_hex}\" contains an invalid character: " +
           "\"#{character}\".", 'Ensure that you did not mispelled it.'
@@ -75,6 +75,38 @@ def parse_metadata()
   }
 end
 
+def write_theme_file(contents)
+  if (ARGV[1])
+    File.write(ARGV[1], contents)
+  else
+    print(contents)
+  end
+end
+
+def create_color_strings(
+  filter, use_groups: false, is_bright_group: false,
+  use_bright_names: false, use_purple: false
+)
+  color_names = [
+    "black", "red", "green", "yellow", "blue", use_purple ?  "purple" :
+    "magenta", "cyan", "white"
+  ]
+  color_strings = []
+  for color_ansi in (
+    (use_groups && is_bright_group ? 8 : 0) ..
+    (use_groups && !is_bright_group ? 7 : 15)
+  )
+    color_hex = $metadata[:colors_hex][
+      color_ansi <= 7 ? color_ansi : color_ansi == 8 ? 4 : color_ansi - 8
+    ]
+    color_name = color_names[color_ansi <= 7 ? color_ansi : color_ansi - 8]
+    if use_bright_names && color_ansi > 7
+      color_name = "bright#{color_name[0].upcase()}#{color_name[1..]}"
+    end
+    color_strings.push(filter.call(color_ansi, color_hex, color_name))
+  end
+  color_strings
+end
+
 check_arguments()
 parse_metadata()
-puts(ARGV)

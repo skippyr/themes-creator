@@ -59,7 +59,8 @@ cd themes-creator
   themes.
 
   All the colors you use must be in HEX format, containing a `#` as the first
-  character. You can use either upper or lower case characters.
+  character and they should not set opacity levels. You can use either upper or
+  lower case characters.
 
   Apart from the background and foreground colors, you do not need to strictly
   respect the reference: for example, you can use a yellow color as ANSI 4

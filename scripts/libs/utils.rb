@@ -11,7 +11,7 @@ def check_arguments()
   scripts_directory = File.dirname(__dir__)
   if (ARGV.length == 0)
     throw_error(
-      'not enought arguments',
+      'not enough arguments',
       'Expected, at least, the path for your metadata file.'
     )
   elsif (ARGV.length > 1)
@@ -37,16 +37,18 @@ end
 
 def parse_colors(colors_hex)
   treated_colors_hex = []
+  expected_number_of_characters = 7
   colors_hex.each() do |color_hex|
-    if (color_hex.length != 7)
+    if (color_hex.length != expected_number_of_characters)
       throw_error(
         "the HEX color \"#{color_hex}\" has an invalid number of characters.",
-        'Ensure that you did not misspelled.'
+        "Expected #{expected_number_of_characters} but received " +
+        "#{color_hex.length}."
       )
     elsif (color_hex[0] != '#')
       throw_error(
         "the HEX color \"#{color_hex}\" must start with the \"#\" character.",
-        'Ensure that you did not misspelled.'
+        'Ensure to use it.'
       )
     end
     color_hex.chars()[1..].each() do |character|

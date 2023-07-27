@@ -10,6 +10,7 @@ end
 
 write_theme_file([
   create_section('Scheme'),
+  create_property('Name', $metadata[:name]),
   create_property('ColorBackground', $metadata[:colors_hex][0]),
   create_property('ColorForeground', $metadata[:colors_hex][7]),
   create_property('ColorPalette', create_color_strings(lambda {

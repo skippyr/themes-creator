@@ -1,4 +1,4 @@
-require_relative('libs/utils')
+require_relative('../libs/utils')
 
 def create_metadata_comment(label, value)
   "## #{label}: #{value}"

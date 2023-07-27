@@ -53,7 +53,7 @@ cd themes-creator
   | 9 | The color correspondent to ANSI 4 (blue)
   | 10 | The color correspondent to ANSI 5 (magenta)
   | 11 | The color correspondent to ANSI 6 (cyan)
-  | 12 | The color correspondent to ANSI 8 (white) (foreground)
+  | 12 | The color correspondent to ANSI 7 (white) (foreground)
 
   ANSI colors are the reference for developers to produce terminal emulators'
   themes.

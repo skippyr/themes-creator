@@ -14,5 +14,5 @@ create_colors_line(lambda {|color_ansi| create_color_ansi_label(color_ansi)})
 create_colors_line(lambda {|color_ansi| "\x1b[48;5;#{color_ansi}m   \x1b[0m"})
 create_colors_line(lambda {
   |color_ansi|
-  "\x1b[38;5;#{color_ansi}m#{color_ansi % 2 == 0 ? "dRa" : "GoN"}\x1b[0m"
+  "\x1b[38;5;#{color_ansi}m#{color_ansi % 2 == 0 ? "dra" : "gon"}\x1b[0m"
 })

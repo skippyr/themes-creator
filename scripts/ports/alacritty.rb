@@ -22,8 +22,8 @@ end
 write_theme_file([
   create_section('colors'),
   create_subsection('primary'),
-  create_property('background', $metadata[:colors_hex][0]),
-  create_property('foreground', $metadata[:colors_hex][7]),
+  create_property('background', "\"#{$metadata[:colors_hex][0]}\""),
+  create_property('foreground', "\"#{$metadata[:colors_hex][7]}\""),
   create_subsection('cursor'),
   create_property('cursor', 'CellForeground'),
   create_property('text', 'CellBackground'),

@@ -113,10 +113,5 @@ def create_color_strings(
   color_strings
 end
 
-def enclose_by_double_quotes(text, escape: false)
-  quotes = "#{escape ? "\\" : ""}\""
-  "#{quotes}#{text}#{quotes}"
-end
-
 check_arguments()
 parse_metadata()

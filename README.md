@@ -2,9 +2,9 @@
 
 ## About
 
-A collection of scripts to easily create and debug theme files for terminal
-emulators. By the way, these are also the tools that helps me maintain my
-theme: [Flamerial](https://github.com/skippyr/flamerial).
+A collection of scripts to easily create and debug ports of themes, specially
+for terminal emulators. By the way, these are also the tools that helps me
+maintain my theme: [Flamerial](https://github.com/skippyr/flamerial).
 
 ![](images/preview-kitty.png)
 ![](images/preview-konsole.png)
@@ -96,7 +96,7 @@ cd themes-creator
 
 ## Support
 
-Report issues, questions or suggestions through the [issues tab](https://github.com/skippyr/chinatown/issues).
+Report issues, questions or suggestions through the [issues tab](https://github.com/skippyr/themes-creator/issues).
 
 ## Copyright
 

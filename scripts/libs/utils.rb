@@ -74,10 +74,10 @@ def parse_metadata()
     )
   end
   $metadata = {
-    name: lines[0],
-    author: lines[1],
-    license: lines[2],
-    upstream: lines[3],
+    name: lines[0].strip(),
+    author: lines[1].strip(),
+    license: lines[2].strip(),
+    upstream: lines[3].strip(),
     colors_hex: parse_colors(lines[4..])
   }
 end

@@ -1,9 +1,9 @@
 $PROGRAM_NAME = File.basename(__FILE__, File.extname(__FILE__))
 
 def Throw_Error(description, suggestion = nil)
-	prefix = "#{$PROGRAM_NAME}: "
-	STDERR.puts("#{prefix}#{description}#{
-		suggestion ? "\n#{" " * prefix.length}#{suggestion}" : ""
+	p = "#{$PROGRAM_NAME}: "
+	STDERR.puts("#{p}#{description}#{
+		suggestion ? "\n#{" " * p.length}#{suggestion}" : ""
 	}")
 	exit(1)
 end
@@ -28,52 +28,52 @@ elsif (!File.exist?(ARGV[1]))
 end
 
 def Parse_Colors(colors)
-	parsed_colors = []
-	expected_total_of_characters = 7
-	colors.each() do |color|
-		if (color[0] != "#")
+	pclr = []
+	tchr = 7
+	colors.each() do |clr|
+		if (clr[0] != "#")
 			Throw_Error(
-				"the color \"#{color}\" must start with the \"#\" character.",
+				"the color \"#{clr}\" must start with the \"#\" character.",
 				"Ensure to use it."
 			)
-		elsif (color.length != expected_total_of_characters)
+		elsif (clr.length != tchr)
 			Throw_Error(
-				"the color \"#{color}\" contains an invalid number of characters.",
-				"Expected \"#{expected_total_of_characters}\" but received " +
-				"#{color.length}."
+				"the color \"#{clr}\" contains an invalid number of characters.",
+				"Expected \"#{tchr}\" but received " +
+				"#{clr.length}."
 			)
 		else
-			color[1..].chars().each() do |color_character|
-				if (!color_character.match(/[0-9a-f]/i))
+			clr[1..].chars().each() do |c|
+				if (!c.match(/[0-9a-f]/i))
 					Throw_Error(
-						"the color \"#{color}\" contains an invalid character: " +
-						"\"#{color_character}\".", "Ensure that you did not " +
+						"the color \"#{clr}\" contains an invalid character: " +
+						"\"#{c}\".", "Ensure that you did not " +
 						"misspelled it."
 					)
 				end
 			end
 		end
-		parsed_colors.push(color.downcase())
+		pclr.push(clr.downcase())
 	end
-	return (parsed_colors)
+	return (pclr)
 end
 
 def Get_Metadata()
-	expected_total_of_lines = 12
-	lines = File.readlines(ARGV[0], chomp: true)
-	if (lines.length != expected_total_of_lines)
+	etl = 12
+	ln = File.readlines(ARGV[0], chomp: true)
+	if (ln.length != etl)
 		Throw_Error(
 			"the metadata file \"#{ARGV[0]}\" contains an invalid number of " +
-			"lines.", "Expected #{expected_total_of_lines} but received " +
-			"#{lines.length}."
+			"lines.", "Expected #{etl} but received " +
+			"#{ln.length}."
 		)
 	end
 	return ({
-		name: lines[0].strip(),
-		author: lines[1].strip(),
-		license: lines[2].strip(),
-		url: lines[3].strip(),
-		colors: Parse_Colors(lines[4..])
+		name: ln[0].strip(),
+		author: ln[1].strip(),
+		license: ln[2].strip(),
+		url: ln[3].strip(),
+		colors: Parse_Colors(ln[4..])
 	})
 end
 
@@ -82,24 +82,21 @@ def Create_Template_String(label)
 end
 
 def Apply_Template(metadata)
-	template = File.read(ARGV[1])
-	["name", "author", "license", "url"].each() do |template_string|
-		template.gsub!(
-			Create_Template_String(template_string),
-			metadata[template_string.to_sym()]
-		)
+	tplt = File.read(ARGV[1])
+	["name", "author", "license", "url"].each() do |s|
+		tplt.gsub!(Create_Template_String(s), metadata[s.to_sym()])
 	end
-	color_index = 0
+	i = 0
 	[
 		"black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"
-	].each() do |color_name|
-		template.gsub!(
-			Create_Template_String(color_name),
-			metadata[:colors][color_index]
+	].each() do |c|
+		tplt.gsub!(
+			Create_Template_String(c),
+			metadata[:colors][i]
 		)
-		color_index += 1
+		i += 1
 	end
-	puts(template)
+	puts(tplt)
 end
 
 metadata = Get_Metadata()

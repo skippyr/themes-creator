@@ -62,6 +62,14 @@ ruby themes-creator.rb metadata.template templates/xresources.template
 
 You can create your own templates to use with the script. For that, you must write a theme file using the strings described in the `Replaces` column of the reference table. They will get replaced by the script by their equivalent data from metadata file. Use the `Description` column of the same table to see what they mean.
 
+### Testing A Theme
+
+You can preview your terminal emulator's color by running the `tests/preview.rb` script.
+
+```bash
+ruby tests/preview.rb
+```
+
 ## Copyright
 
 Copyright (c) Sherman Rofeman. MIT license.

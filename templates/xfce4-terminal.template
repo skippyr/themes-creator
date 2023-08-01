@@ -1,0 +1,5 @@
+[Scheme]
+Name=~%{name}%~
+ColorBackground=~%{black}%~
+ColorForeground=~%{white}%~
+ColorPalette=~%{black}%~;~%{red}%~;~%{green}%~;~%{yellow}%~;~%{blue}%~;~%{magenta}%~;~%{cyan}%~;~%{white}%~;~%{blue}%~;~%{red}%~;~%{green}%~;~%{yellow}%~;~%{blue}%~;~%{magenta}%~;~%{cyan}%~;~%{white}%~

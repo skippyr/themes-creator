@@ -2,7 +2,6 @@
 ## author: ~%{author}%~
 ## license: ~%{license}%~
 ## upstream: ~%{url}%~
-
 background ~%{black}%~
 foreground ~%{white}%~
 cursor ~%{white}%~

@@ -1,0 +1,31 @@
+[metadata]
+name = "~%{name}%~"
+author = "~%{author}%~"
+origin_url = "~%{url}%~"
+[colors]
+background = "~%{black}%~"
+foreground = "~%{white}%~"
+cursor_bg = "~%{white}%~"
+cursor_fg = "~%{black}%~"
+selection_bg = "~%{white}%~"
+selection_fg = "~%{black}%~"
+ansi = [
+	"~%{black}%~",
+	"~%{red}%~",
+	"~%{green}%~",
+	"~%{yellow}%~",
+	"~%{blue}%~",
+	"~%{magenta}%~",
+	"~%{cyan}%~",
+	"~%{white}%~"
+]
+brights = [
+	"~%{blue}%~",
+	"~%{red}%~",
+	"~%{green}%~",
+	"~%{yellow}%~",
+	"~%{blue}%~",
+	"~%{magenta}%~",
+	"~%{cyan}%~",
+	"~%{white}%~"
+]

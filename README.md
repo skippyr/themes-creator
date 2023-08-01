@@ -44,7 +44,7 @@ Use the following table as a reference:
 | 9 | Color 4 (blue). | `~%{blue}%~`
 | 10 | Color 5 (magenta). | `~%{magenta}%~`
 | 11 | Color 6 (cyan). | `~%{cyan}%~`
-| 12 | Color 7 (white). | `~%{white}%~`
+| 12 | Color 7 (white) (foreground). | `~%{white}%~`
 
 Colors use ANSI convention as reference. They must use HEX format, starting with the `#` character and without opacity attributes. Their case does not matter.
 

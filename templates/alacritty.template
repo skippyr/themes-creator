@@ -1,0 +1,28 @@
+colors:
+  primary:
+    background: "~%{black}%~"
+    foreground: "~%{white}%~"
+  cursor:
+    cursor: "~%{white}%~"
+    text: "~%{black}%~"
+  selection:
+    cursor: "~%{white}%~"
+    text: "~%{black}%~"
+  normal:
+    black: "~%{black}%~"
+    red: "~%{red}%~"
+    green: "~%{green}%~"
+    yellow: "~%{yellow}%~"
+    blue: "~%{blue}%~"
+    magenta: "~%{magenta}%~"
+    cyan: "~%{cyan}%~"
+    white: "~%{white}%~"
+  bright:
+    black: "~%{blue}%~"
+    red: "~%{red}%~"
+    green: "~%{green}%~"
+    yellow: "~%{yellow}%~"
+    blue: "~%{blue}%~"
+    magenta: "~%{magenta}%~"
+    cyan: "~%{cyan}%~"
+    white: "~%{white}%~"

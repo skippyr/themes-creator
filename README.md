@@ -64,7 +64,7 @@ You can create your own templates to use with the script. For that, you must wri
 
 ### Testing A Theme
 
-You can preview your terminal emulator's color by running the `tests/preview.rb` script.
+You can preview your terminal emulator's colors by running the `tests/preview.rb` script.
 
 ```bash
 ruby tests/preview.rb

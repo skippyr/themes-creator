@@ -8,7 +8,7 @@ def Throw_Error(description, suggestion = nil)
 	exit(1)
 end
 
-if (ARGV.length != 2)
+if (ARGV.length < 2)
 	Throw_Error(
 		"not enough arguments.", "Expects the paths for metadata and template " +
 		"files."

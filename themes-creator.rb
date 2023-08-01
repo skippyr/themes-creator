@@ -28,52 +28,52 @@ elsif (!File.exist?(ARGV[1]))
 end
 
 def Parse_Colors(colors)
-	pclr = []
-	tchr = 7
-	colors.each() do |clr|
-		if (clr[0] != "#")
+	parsed_colors = []
+	expect_total_of_characters = 7
+	colors.each() do |color|
+		if (color[0] != "#")
 			Throw_Error(
-				"the color \"#{clr}\" must start with the \"#\" character.",
+				"the color \"#{color}\" must start with the \"#\" character.",
 				"Ensure to use it."
 			)
-		elsif (clr.length != tchr)
+		elsif (color.length != expect_total_of_characters)
 			Throw_Error(
-				"the color \"#{clr}\" contains an invalid number of characters.",
-				"Expected \"#{tchr}\" but received " +
-				"#{clr.length}."
+				"the color \"#{color}\" contains an invalid number of characters.",
+				"Expected \"#{expect_total_of_characters}\" but received " +
+				"#{color.length}."
 			)
 		else
-			clr[1..].chars().each() do |c|
-				if (!c.match(/[0-9a-f]/i))
+			color[1..].chars().each() do |c|
+				if (!color.match(/[0-9a-f]/i))
 					Throw_Error(
-						"the color \"#{clr}\" contains an invalid character: " +
+						"the color \"#{color}\" contains an invalid character: " +
 						"\"#{c}\".", "Ensure that you did not " +
 						"misspelled it."
 					)
 				end
 			end
 		end
-		pclr.push(clr.downcase())
+		parsed_colors.push(color.downcase())
 	end
-	return (pclr)
+	return (parsed_colors)
 end
 
 def Get_Metadata()
-	etl = 12
-	ln = File.readlines(ARGV[0], chomp: true)
-	if (ln.length != etl)
+	expected_total_of_lines = 12
+	lines = File.readlines(ARGV[0], chomp: true)
+	if (lines.length != expected_total_of_lines)
 		Throw_Error(
 			"the metadata file \"#{ARGV[0]}\" contains an invalid number of " +
-			"lines.", "Expected #{etl} but received " +
-			"#{ln.length}."
+			"lines.", "Expected #{expect_total_of_characters} but received " +
+			"#{lines.length}."
 		)
 	end
 	return ({
-		name: ln[0].strip(),
-		author: ln[1].strip(),
-		license: ln[2].strip(),
-		url: ln[3].strip(),
-		colors: Parse_Colors(ln[4..])
+		name: lines[0].strip(),
+		author: lines[1].strip(),
+		license: lines[2].strip(),
+		url: lines[3].strip(),
+		colors: Parse_Colors(lines[4..])
 	})
 end
 
@@ -82,21 +82,21 @@ def Create_Template_String(label)
 end
 
 def Apply_Template(metadata)
-	tplt = File.read(ARGV[1])
+	template = File.read(ARGV[1])
 	["name", "author", "license", "url"].each() do |s|
-		tplt.gsub!(Create_Template_String(s), metadata[s.to_sym()])
+		template.gsub!(Create_Template_String(s), metadata[s.to_sym()])
 	end
 	i = 0
 	[
 		"black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"
 	].each() do |c|
-		tplt.gsub!(
+		template.gsub!(
 			Create_Template_String(c),
 			metadata[:colors][i]
 		)
 		i += 1
 	end
-	puts(tplt)
+	puts(template)
 end
 
 metadata = Get_Metadata()

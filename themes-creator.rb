@@ -10,20 +10,20 @@ end
 
 if (ARGV.length != 2)
 	Throw_Error(
-		"not enough arguments.",
-		"Expects the paths for metadata and template files."
+		"not enough arguments.", "Expects the paths for metadata and template " +
+		"files."
 	)
 end
 
 if (!File.exist?(ARGV[0]))
 	Throw_Error(
-		"the metadata file \"#{ARGV[0]}\" does not exists.",
-		"Ensure that you did not misspelled it."
+		"the metadata file \"#{ARGV[0]}\" does not exists.", "Ensure that you " +
+		"did not misspelled it."
 	)
 elsif (!File.exist?(ARGV[1]))
 	Throw_Error(
-		"the template file \"#{ARGV[1]}\" does not exists.",
-		"Ensure that you did not misspelled it."
+		"the template file \"#{ARGV[1]}\" does not exists.", "Ensure that you " +
+		"did not misspelled it."
 	)
 end
 
@@ -77,5 +77,30 @@ def Get_Metadata()
 	})
 end
 
+def Create_Template_String(label)
+	return ("~%{#{label}}%~")
+end
+
+def Apply_Template(metadata)
+	template = File.read(ARGV[1])
+	["name", "author", "license", "url"].each() do |template_string|
+		template.gsub!(
+			Create_Template_String(template_string),
+			metadata[template_string.to_sym()]
+		)
+	end
+	color_index = 0
+	[
+		"black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"
+	].each() do |color_name|
+		template.gsub!(
+			Create_Template_String(color_name),
+			metadata[:colors][color_index]
+		)
+		color_index += 1
+	end
+	puts(template)
+end
+
 metadata = Get_Metadata()
-puts(metadata)
+Apply_Template(metadata)

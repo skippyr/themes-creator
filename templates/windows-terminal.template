@@ -1,0 +1,23 @@
+{
+    "name": "~%{name}%~",
+    "background": "~%{black}%~",
+    "foreground": "~%{white}%~",
+    "cursorColor": "~%{white}%~",
+    "selectionBackground": "~%{white}%~",
+    "black": "~%{black}%~",
+    "red": "~%{red}%~",
+    "green": "~%{green}%~",
+    "yellow": "~%{yellow}%~",
+    "blue": "~%{blue}%~",
+    "purple": "~%{magenta}%~",
+    "cyan": "~%{cyan}%~",
+    "white": "~%{white}%~",
+    "brightBlack": "~%{blue}%~",
+    "brightRed": "~%{red}%~",
+    "brightGreen": "~%{green}%~",
+    "brightYellow": "~%{yellow}%~",
+    "brightBlue": "~%{blue}%~",
+    "brightPurple": "~%{magenta}%~",
+    "brightCyan": "~%{cyan}%~",
+    "brightWhite": "~%{white}%~"
+}

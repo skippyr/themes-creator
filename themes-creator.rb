@@ -45,11 +45,11 @@ def Parse_Colors(colors)
 				"#{color.length}."
 			)
 		else
-			color[1..].chars().each() do |c|
+			color[1..].chars().each() do |character|
 				if (!color.match(/[0-9a-f]/i))
 					Throw_Error(
 						"The color \"#{color}\" contains an invalid character: " +
-						"\"#{c}\".", "Ensure that you did not " +
+						"\"#{character}\".", "Ensure that you did not " +
 						"misspelled it."
 					)
 				end
@@ -85,18 +85,21 @@ end
 
 def Apply_Template(metadata)
 	template = File.read(ARGV[1])
-	["name", "author", "license", "url"].each() do |s|
-		template.gsub!(Create_Template_String(s), metadata[s.to_sym()])
+	["name", "author", "license", "url"].each() do |template_string|
+		template.gsub!(
+			Create_Template_String(template_string),
+			metadata[template_string.to_sym()]
+		)
 	end
-	i = 0
+	color_index = 0
 	[
 		"black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"
-	].each() do |c|
+	].each() do |color|
 		template.gsub!(
-			Create_Template_String(c),
-			metadata[:colors][i]
+			Create_Template_String(color),
+			metadata[:colors][color_index]
 		)
-		i += 1
+		color_index += 1
 	end
 	puts(template)
 end

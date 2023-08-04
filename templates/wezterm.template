@@ -10,22 +10,22 @@ cursor_fg = "~%{black}%~"
 selection_bg = "~%{white}%~"
 selection_fg = "~%{black}%~"
 ansi = [
-	"~%{black}%~",
-	"~%{red}%~",
-	"~%{green}%~",
-	"~%{yellow}%~",
-	"~%{blue}%~",
-	"~%{magenta}%~",
-	"~%{cyan}%~",
-	"~%{white}%~"
+  "~%{black}%~",
+  "~%{red}%~",
+  "~%{green}%~",
+  "~%{yellow}%~",
+  "~%{blue}%~",
+  "~%{magenta}%~",
+  "~%{cyan}%~",
+  "~%{white}%~"
 ]
 brights = [
-	"~%{blue}%~",
-	"~%{red}%~",
-	"~%{green}%~",
-	"~%{yellow}%~",
-	"~%{blue}%~",
-	"~%{magenta}%~",
-	"~%{cyan}%~",
-	"~%{white}%~"
+  "~%{blue}%~",
+  "~%{red}%~",
+  "~%{green}%~",
+  "~%{yellow}%~",
+  "~%{blue}%~",
+  "~%{magenta}%~",
+  "~%{cyan}%~",
+  "~%{white}%~"
 ]

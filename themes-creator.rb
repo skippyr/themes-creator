@@ -10,11 +10,11 @@ $PROGRAM_HELP =
 
 def Throw_Error(description, suggestion = nil)
 	STDERR.puts("Error Report - #{$PROGRAM_NAME} (1):")
-	STDERR.puts("  Description:")
-	STDERR.puts("    #{description}")
+	STDERR.puts("   Description:")
+	STDERR.puts("      #{description}")
 	if (suggestion)
-		STDERR.puts("\n  Suggestion:")
-		STDERR.puts("    #{suggestion}")
+		STDERR.puts("\n   Suggestion:")
+		STDERR.puts("      #{suggestion}")
 	end
 	exit(1)
 end

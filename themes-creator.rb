@@ -27,10 +27,13 @@ def Parse_Metadata_Flag(flag, text)
 end
 
 def Check_File_Existence(name, path)
+	suggestion = "Ensure that you did not misspelled it."
 	Throw_Error(
-		"The #{name} file \"#{path}\" does not exists.", "Ensure that you did " +
-		"not misspelled it."
+		"The #{name} file \"#{path}\" does not exists.", suggestion
 	) unless File.exist?(path)
+	Throw_Error(
+		"The #{name} file \"#{path}\" is not a file.", suggestion
+	) unless File.file?(path)
 end
 
 def Parse_Colors(colors)

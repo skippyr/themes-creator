@@ -57,7 +57,6 @@ def Parse_Colors(colors)
 	parsed_colors
 end
 
-
 def Get_Metadata()
 	expected_total_of_lines = 12
 	lines = File.readlines(ARGV[0], chomp: true)

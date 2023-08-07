@@ -14,7 +14,7 @@ Throw_Error(description, suggestion = nil)
 end
 
 def
-Parse_Metadata_Flag(flag, action)
+Parse_Flag(flag, action)
     if (ARGV.include?("--#{flag}"))
         action.call()
         exit(0)
@@ -40,6 +40,23 @@ Print_Help()
     puts()
     puts("EXIT CODES")
     puts("The exit code 1 will be throw if an error happens.")
+end
+
+def
+Print_Colors()
+    for ansi in 0..15
+        print(yield (ansi))
+    end
+    puts()
+end
+
+def
+Print_Preview()
+    Print_Colors() {|ansi| "#{"%3s" % ansi}"}
+    Print_Colors() {|ansi| "\x1b[48;5;#{ansi}m   \x1b[0m"}
+    Print_Colors() {|ansi| "\x1b[38;5;#{ansi}m#{
+        ansi % 2 == 0 ? "gon" : "dra"
+    }\x1b[0m"}
 end
 
 def
@@ -116,8 +133,9 @@ Apply_Template()
     puts(template)
 end
 
-Parse_Metadata_Flag("help", lambda{Print_Help()})
-Parse_Metadata_Flag("version", lambda{puts($PROGRAM_VERSION)})
+Parse_Flag("help", lambda {Print_Help()})
+Parse_Flag("version", lambda {puts($PROGRAM_VERSION)})
+Parse_Flag("preview", lambda {Print_Preview()})
 
 Throw_Error("not enough arguments.", "Expected the paths for metadata and " +
             "template files.") if ARGV.length < 2

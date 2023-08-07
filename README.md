@@ -47,7 +47,7 @@ cd themes-creator
 
 -   Use the script passing the paths of your metadata file and of the template you have chosen as arguments. For example: you can create a theme for Kitty using the `metadata.template` file.
 ```bash
-ruby themes-creator.rb metadata.template templates/kitty.template
+ruby themes-creator metadata.template templates/kitty.template
 ```
 
 ### Creating A Template
@@ -75,13 +75,13 @@ If you need some references, you can always take a look in the source code of th
 ### Testing Terminal Emulator Themes
 You can test your terminal emulators themes using the preview within the script:
 ```bash
-ruby themes-creator.rb --preview
+ruby themes-creator --preview
 ```
 
 ### Quick Help Instructions
 You can always remind yourself of how to use the script by reading its help instructions:
 ```bash
-ruby themes-creator.rb --help
+ruby themes-creator --help
 ```
 
 ## Copyright

@@ -23,7 +23,7 @@ end
 
 def
 Print_Help()
-    puts("Usage: ruby #{$PROGRAM_NAME} <METADATA FILE> <TEMPLATE FILE>")
+    puts("Usage: ruby #{$PROGRAM_NAME} [FLAG]... [METADATA FILE] [TEMPLATE FILE]")
     puts("Creates themes based on templates.")
     puts()
     puts("METADATA FLAGS")

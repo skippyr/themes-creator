@@ -14,8 +14,8 @@ Throw_Error(description, suggestion = nil)
 end
 
 def
-Parse_Flag(flag, action)
-    if (ARGV.include?("--#{flag}"))
+Parse_Option(option, action)
+    if (ARGV.include?("--#{option}"))
         action.call()
         exit(0)
     end
@@ -23,18 +23,18 @@ end
 
 def
 Print_Help()
-    puts("Usage: ruby #{$PROGRAM_NAME} [FLAG]... [METADATA FILE] [TEMPLATE FILE]")
+    puts("Usage: ruby #{$PROGRAM_NAME} [OPTION]... [METADATA FILE] [TEMPLATE " +
+         "FILE]")
     puts("Creates themes based on templates.")
     puts()
-    puts("METADATA FLAGS")
-    puts("The following flags can be used to get information about the " +
-         "program.")
+    puts("METADATA OPTIONS")
+    puts("These options can be used to get information about the program.")
     puts()
     puts("    --version    print its version.")
     puts("    --help       print these help instructions.")
     puts()
-    puts("TEST FLAGS")
-    puts("The following flags can be used to test themes.")
+    puts("TEST OPTIONS")
+    puts("These options can be used to test themes.")
     puts()
     puts("    --preview    print the terminal emulator's colors.")
     puts()
@@ -133,9 +133,9 @@ Apply_Template()
     puts(template)
 end
 
-Parse_Flag("help", lambda {Print_Help()})
-Parse_Flag("version", lambda {puts($PROGRAM_VERSION)})
-Parse_Flag("preview", lambda {Print_Preview()})
+Parse_Option("help", lambda {Print_Help()})
+Parse_Option("version", lambda {puts($PROGRAM_VERSION)})
+Parse_Option("preview", lambda {Print_Preview()})
 
 Throw_Error("not enough arguments.", "Expected the paths of metadata and " +
             "template files.") if ARGV.length < 2

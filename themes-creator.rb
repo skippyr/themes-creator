@@ -1,5 +1,9 @@
+#!/usr/bin/env ruby
+
 $PROGRAM_NAME = File.basename(__FILE__, File.extname(__FILE__))
 $PROGRAM_VERSION = "v2.1.2"
+$METADATA_FILE = ARGV[0]
+$TEMPLATE_FILE = ARGV[1]
 
 def
 Throw_Error(description, suggestion = nil)
@@ -42,9 +46,58 @@ def
 Check_File_Existence(name, path)
     suggestion = "Ensure that you did not misspelled it."
     prefix = "The #{name} file \"#{path}\" "
-    Throw_Error("#{prefix}does not exists.",
-                suggestion) if (!File.exist?(path))
+    Throw_Error("#{prefix}does not exists.", suggestion) if (!File.exist?(path))
     Throw_Error("#{prefix}is not a file.", suggestion) if (!File.file?(path))
+end
+
+def
+Is_Hex_Character(character)
+    character.match(/[0-9a-f]/i)
+end
+
+def
+Parse_Colors(colors)
+    parsed_colors = []
+    expected_number_of_characters = 7
+    colors.each() do |color|
+        prefix = "The color \"#{color}\" "
+        Throw_Error("#{prefix}must start with the \"#\" character.",
+                    "Ensure to use it.") if (color[0] != "#")
+        Throw_Error("#{prefix}contains an invalid number of characters.",
+                    "Expecteded #{expected_number_of_characters} but " +
+                    "received #{color.length}.") if (
+                        color.length != expected_number_of_characters)
+        color[1..].chars().each() do |character|
+            Throw_Error("#{prefix}contains an invalid character: " +
+                        "\"#{character}\".", "Ensure that you did not " +
+                        "misspelled it.") if !Is_Hex_Character(character)
+        end
+        parsed_colors.push(color.downcase())
+    end
+    parsed_colors
+end
+
+def
+Get_Metadata()
+    expected_number_of_lines = 12
+    lines = File.readlines($METADATA_FILE, chomp: true)
+    Throw_Error("The metadata file contains an invalid number of lines.",
+                "Expected #{expected_number_of_lines} but received " +
+                "#{lines.length}.") if (lines.length !=
+                                        expected_number_of_lines)
+    {
+        name: lines[0].strip(),
+        author: lines[1].strip(),
+        license: lines[2].strip(),
+        url: lines[3].strip(),
+        colors: Parse_Colors(lines[4..])
+    }
+end
+
+def
+Apply_Template()
+    metadata = Get_Metadata()
+    puts(metadata)
 end
 
 Parse_Metadata_Flag("help", lambda{Print_Help()})
@@ -53,5 +106,7 @@ Parse_Metadata_Flag("version", lambda{puts($PROGRAM_VERSION)})
 Throw_Error("not enough arguments.", "Expected the paths for metadata and " +
             "template files.") if ARGV.length < 2
 
-Check_File_Existence("metadata", ARGV[0])
-Check_File_Existence("template", ARGV[1])
+Check_File_Existence("metadata", $METADATA_FILE)
+Check_File_Existence("template", $TEMPLATE_FILE)
+
+Apply_Template()

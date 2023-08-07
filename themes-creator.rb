@@ -64,7 +64,7 @@ Parse_Colors(colors)
         Throw_Error("#{prefix}must start with the \"#\" character.",
                     "Ensure to use it.") if (color[0] != "#")
         Throw_Error("#{prefix}contains an invalid number of characters.",
-                    "Expecteded #{expected_number_of_characters} but " +
+                    "Expected #{expected_number_of_characters} but " +
                     "received #{color.length}.") if (
                         color.length != expected_number_of_characters)
         color[1..].chars().each() do |character|
@@ -95,9 +95,25 @@ Get_Metadata()
 end
 
 def
+Create_Placeholder(label)
+    "~%{#{label}}%~"
+end
+
+def
 Apply_Template()
     metadata = Get_Metadata()
-    puts(metadata)
+    template = File.read($TEMPLATE_FILE)
+    ["name", "author", "license", "url"].each() do |label|
+        template.gsub!(Create_Placeholder(label), metadata[label.to_sym()])
+    end
+    color_index = 0
+    ["black", "red", "green", "yellow", "blue", "magenta", "cyan",
+     "white"].each() do |color|
+        template.gsub!(Create_Placeholder(color),
+                       metadata[:colors][color_index])
+        color_index += 1
+    end
+    puts(template)
 end
 
 Parse_Metadata_Flag("help", lambda{Print_Help()})

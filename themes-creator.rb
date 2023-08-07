@@ -137,7 +137,7 @@ Parse_Flag("help", lambda {Print_Help()})
 Parse_Flag("version", lambda {puts($PROGRAM_VERSION)})
 Parse_Flag("preview", lambda {Print_Preview()})
 
-Throw_Error("not enough arguments.", "Expected the paths for metadata and " +
+Throw_Error("not enough arguments.", "Expected the paths of metadata and " +
             "template files.") if ARGV.length < 2
 
 Check_File_Existence("metadata", $METADATA_FILE)

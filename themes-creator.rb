@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 $PROGRAM_NAME = File.basename(__FILE__, File.extname(__FILE__))
-$PROGRAM_VERSION = "v2.1.2"
+$PROGRAM_VERSION = "v2.2.0"
 $METADATA_FILE = ARGV[0]
 $TEMPLATE_FILE = ARGV[1]
 

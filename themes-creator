@@ -62,7 +62,7 @@ def Check_File_Existence(name, path)
 end
 
 def Is_Hex_Character(character)
-    character.match(/[0-9a-f]/i)
+    return (character.match(/[0-9a-f]/i))
 end
 
 def Parse_Colors(colors)
@@ -83,7 +83,7 @@ def Parse_Colors(colors)
         end
         parsed_colors.push(color.downcase())
     end
-    parsed_colors
+    return (parsed_colors)
 end
 
 def Get_Metadata()
@@ -93,17 +93,17 @@ def Get_Metadata()
                 "Expected #{expected_number_of_lines} but received " +
                 "#{lines.length}.") if (lines.length !=
                                         expected_number_of_lines)
-    {
+    return ({
         name: lines[0].strip(),
         author: lines[1].strip(),
         license: lines[2].strip(),
         url: lines[3].strip(),
         colors: Parse_Colors(lines[4..])
-    }
+    })
 end
 
 def Create_Placeholder(label)
-    "~%{#{label}}%~"
+    return ("~%{#{label}}%~")
 end
 
 def Apply_Template()
@@ -125,11 +125,8 @@ end
 Parse_Option("help", lambda {Print_Help()})
 Parse_Option("version", lambda {puts($PROGRAM_VERSION)})
 Parse_Option("preview", lambda {Print_Preview()})
-
 Throw_Error("not enough arguments.", "Expected the paths of metadata and " +
             "template files.") if ARGV.length < 2
-
 Check_File_Existence("metadata", $METADATA_FILE)
 Check_File_Existence("template", $TEMPLATE_FILE)
-
 Apply_Template()

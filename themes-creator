@@ -56,7 +56,7 @@ end
 
 def Check_File_Existence(name, path)
     suggestion = "Ensure that you did not misspelled it."
-    prefix = "The #{name} file \"#{path}\" "
+    prefix = "the #{name} file \"#{path}\" "
     Throw_Error("#{prefix}does not exists.", suggestion) if (!File.exist?(path))
     Throw_Error("#{prefix}is not a file.", suggestion) if (!File.file?(path))
 end
@@ -69,7 +69,7 @@ def Parse_Colors(colors)
     parsed_colors = []
     expected_number_of_characters = 7
     colors.each() do |color|
-        prefix = "The color \"#{color}\" "
+        prefix = "the color \"#{color}\" "
         Throw_Error("#{prefix}must start with the \"#\" character.",
                     "Ensure to use it.") if (color[0] != "#")
         Throw_Error("#{prefix}contains an invalid number of characters.",
@@ -89,7 +89,7 @@ end
 def Get_Metadata()
     expected_number_of_lines = 12
     lines = File.readlines($METADATA_FILE, chomp: true)
-    Throw_Error("The metadata file contains an invalid number of lines.",
+    Throw_Error("the metadata file contains an invalid number of lines.",
                 "Expected #{expected_number_of_lines} but received " +
                 "#{lines.length}.") if (lines.length !=
                                         expected_number_of_lines)

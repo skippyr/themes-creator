@@ -5,10 +5,9 @@ $PROGRAM_VERSION = "v2.2.0"
 $METADATA_FILE = ARGV[0]
 $TEMPLATE_FILE = ARGV[1]
 
-def Throw_Error(description, suggestion = nil)
-    prefix = "#{$PROGRAM_NAME}: "
-    STDERR.puts("#{prefix}#{description}")
-    STDERR.puts("#{" " * prefix.length}#{suggestion}") if (suggestion)
+def Throw_Error(description, fix_suggestion = nil)
+    STDERR.puts("#{$PROGRAM_NAME}: #{description}")
+    STDERR.puts(fix_suggestion) if (fix_suggestion)
     exit(1)
 end
 
